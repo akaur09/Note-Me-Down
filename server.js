@@ -11,7 +11,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.post('/api/notes', (req,res) => {
-    fs.readFile('./db/db.json', 'utf8', (err, data)=>{
+    fs.readFile('./db/db.json', 'utgf8', (err, data)=>{
         if (err) throw err;
         var notes =JSON.parse(data);
         let userNote= req.body;
