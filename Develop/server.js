@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs');
-const { parse } = require('path');
 const path = require('path');
 
 const app = express();
