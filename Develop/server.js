@@ -34,5 +34,28 @@ app.delete('/api/notes/:id', (req, res) => {
             res.json({msg:'sucess'});
         });
     });
-})
+});
 
+app.get('api/notes/:id', (req,res) =>{
+    res.json(notes[req.params.id]);
+});
+
+app.get('/api/notes', (req,res) => {
+    fs.readFile('./db/db.json', 'utf8', (err, data)=>{
+        if (err) throw err;
+        var notes = JSON.parse(data);
+        res.json(notes);
+    });
+});
+
+app.get('/notes', (req,res) => {
+    res.sendFile(path.join(__dirname, '/notes.html'))
+});
+
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, '/index.html'))
+});
+
+app.listen(PORT, () => {
+    console.log(`app listening on PORT: ${PORT}`)
+});
