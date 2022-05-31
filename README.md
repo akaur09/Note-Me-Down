@@ -2,7 +2,17 @@
 
 ## Description:
 The purpose of this assignment was to create a web application where a user can take notes.
+
+deployed link:  https://akaur09.github.io/Note-Me-Down/
 ## Usage:
+- Users can write, edit and delete notes as they please
+- Notes can be saved so that when page is refreshed the notes are not lost
+
+![Alt img](./assets/images/notes.png)
+
+## Installation:
+Nothing is needed to be installed to run the website.
+However the app is made through `npm install`
 
 ## Creditor
 Amnider Kaur (github: https://github.com/akaur09)
