@@ -8,8 +8,22 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(express.urlencoded({extended: true}));
-app.use(express.static('public'));
+app.use(express.static('assets'));
 app.use(express.json());
+
+app.get('/notes', (req,res) => {
+    res.sendFile(path.join(__dirname, '/notes.html'))
+});
+
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, '/index.html'))
+});
+
+app.get('/api/notes', function(req, res){
+    res.json(db);
+}
+);
+// redo code here: make it work using different method.
 
 app.post('/api/notes', (req,res) => {
     fs.readFile('./db/db.json', 'utgf8', (err, data)=>{
@@ -38,22 +52,6 @@ app.delete('/api/notes/:id', (req, res) => {
 
 app.get('api/notes/:id', (req,res) =>{
     res.json(notes[req.params.id]);
-});
-
-app.get('/api/notes', (req,res) => {
-    fs.readFile('./db/db.json', 'utf8', (err, data)=>{
-        if (err) throw err;
-        var notes = JSON.parse(data);
-        res.json(notes);
-    });
-});
-
-app.get('/notes', (req,res) => {
-    res.sendFile(path.join(__dirname, '/notes.html'))
-});
-
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, '/index.html'))
 });
 
 app.listen(PORT, () => {
