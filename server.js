@@ -1,7 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-
+// add db connection
+const db = require('./db/db.json');
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -59,3 +60,4 @@ app.listen(PORT, () => {
     console.log(`app listening on PORT: ${PORT}`)
 });
 // clean up code 
+// fix code to function
